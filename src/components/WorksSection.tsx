@@ -78,7 +78,7 @@ export function WorksSection() {
         />
       </div>
 
-      <div className="wrap mt-4 md:mt-6">
+      <div className="wrap mt-4 md:mt-6" ref={grid2Ref}>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-12 md:gap-6">
           {PHOTOS.slice(4).map((p) => (
             <figure key={p.src} data-reveal-item className={`m-0 ${p.span}`}>
