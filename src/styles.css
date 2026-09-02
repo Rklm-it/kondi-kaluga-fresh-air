@@ -238,9 +238,16 @@
   font-weight: 600;
   font-size: 16px;
   line-height: 1;
-  transition: opacity 0.2s ease;
+  transition: background-color var(--dur-ui) ease-out;
   &:hover {
-    opacity: 0.88;
+    background-color: color-mix(in srgb, var(--green) 90%, #000000);
+  }
+  &:active {
+    background-color: color-mix(in srgb, var(--green) 82%, #000000);
+  }
+  &:disabled {
+    background-color: color-mix(in srgb, var(--green) 60%, #ffffff);
+    cursor: default;
   }
 }
 
@@ -249,6 +256,7 @@
   text-decoration: underline;
   text-underline-offset: 4px;
   text-decoration-thickness: 1px;
+  transition: color var(--dur-ui) ease-out;
   &:hover {
     color: var(--green);
   }
@@ -267,6 +275,7 @@
   font-family: var(--font-body);
   font-size: 16px;
   appearance: none;
+  transition: border-color var(--dur-ui) ease-out;
   &:focus {
     outline: none;
     border-bottom-color: var(--green);
@@ -283,6 +292,9 @@
   border-radius: 2px;
   appearance: none;
   background-color: var(--background);
+  transition:
+    background-color var(--dur-ui) ease-out,
+    border-color var(--dur-ui) ease-out;
   &:checked {
     background-color: var(--green);
     border-color: var(--green);
@@ -318,8 +330,10 @@ html {
   font-feature-settings: "tnum" 1;
   font-size: 17px;
   line-height: 1.4;
+  background-color: transparent;
+  transition: background-color var(--dur-ui) ease-out;
   &:hover {
-    color: var(--green);
+    background-color: color-mix(in srgb, var(--line) 45%, #ffffff);
   }
   @media (min-width: 768px) {
     font-size: 24px;
@@ -328,4 +342,52 @@ html {
 
 @utility on-green {
   color: #ffffff;
+}
+
+/* ---- Движение: токены ---- */
+:root {
+  --dur-ui: 0.18s;
+  --dur-reveal: 0.4s;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Появление секций и карточек. Класс ставится скриптом. */
+.reveal {
+  opacity: 0;
+  transform: translateY(16px);
+  transition:
+    opacity var(--dur-reveal) var(--ease),
+    transform var(--dur-reveal) var(--ease);
+  will-change: opacity, transform;
+}
+
+.reveal-in {
+  opacity: 1;
+  transform: translateY(0);
+  will-change: auto;
+}
+
+/* Мгновенная смена итога с переходом прозрачности */
+@keyframes total-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.total-fade {
+  animation: total-fade 0.18s ease-out;
 }

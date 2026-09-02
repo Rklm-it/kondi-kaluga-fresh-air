@@ -1,4 +1,5 @@
 import { POWERS, WALLS, formatRub, scrollToId, useCalc } from "@/lib/calc";
+import { useReveal } from "@/lib/reveal";
 
 const EXTRA_WORKS: { label: string; price: string; add?: { id: string; label: string; amount: number } }[] = [
   { label: "Метр кабель-канала 60×60 с монтажом", price: "700 ₽" },
@@ -28,10 +29,11 @@ const EXTRA_WORKS: { label: string; price: string; add?: { id: string; label: st
 
 export function PriceSection() {
   const calc = useCalc();
+  const revealRef = useReveal<HTMLDivElement>();
 
   return (
     <section id="price" className="section-pad border-t border-line">
-      <div className="wrap">
+      <div className="wrap" ref={revealRef}>
         <h2 className="h2">Сколько стоит монтаж</h2>
         <p className="small mt-3 text-muted">Стандартный монтаж, трасса до 5 метров</p>
 

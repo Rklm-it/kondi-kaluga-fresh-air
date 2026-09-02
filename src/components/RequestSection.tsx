@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { formatRub, useCalc } from "@/lib/calc";
+import { useReveal } from "@/lib/reveal";
 
 export function RequestSection() {
   const calc = useCalc();
+  const revealRef = useReveal<HTMLDivElement>();
   const [sent, setSent] = useState(false);
+  const [sending, setSending] = useState(false);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [when, setWhen] = useState("");
@@ -13,7 +16,7 @@ export function RequestSection() {
 
   return (
     <section id="zayavka" className="section-pad border-t border-line">
-      <div className="wrap">
+      <div className="wrap" ref={revealRef}>
         <h2 className="h2">Отправить расчёт мастеру</h2>
 
         <div className="mt-10 grid gap-12 md:mt-14 md:grid-cols-2 md:gap-16">
@@ -35,7 +38,11 @@ export function RequestSection() {
                 </div>
                 <div className="mt-8 border-t border-line pt-8">
                   <p className="small text-muted">Итог</p>
-                  <p className="total mt-2 text-green">{totalText}</p>
+                  <p className="total mt-2 text-green">
+                <span key={totalText} className="total-fade inline-block">
+                  {totalText}
+                </span>
+              </p>
                 </div>
               </>
             ) : (
@@ -51,8 +58,12 @@ export function RequestSection() {
             ) : (
               <form
                 className="grid gap-8"
-                onSubmit={(e) => {
+                onSubmit={async (e) => {
                   e.preventDefault();
+                  if (sending) return;
+                  setSending(true);
+                  await new Promise((r) => setTimeout(r, 600));
+                  setSending(false);
                   setSent(true);
                 }}
               >
@@ -94,8 +105,8 @@ export function RequestSection() {
                 </label>
 
                 <div>
-                  <button type="submit" className="btn">
-                    Отправить
+                  <button type="submit" className="btn" disabled={sending}>
+                    {sending ? "Отправляем…" : "Отправить"}
                   </button>
                   <p className="small mt-4 text-muted">
                     Перезвоним в рабочее время. Данные никуда не передаём

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { POWERS, WALLS, formatRub, scrollToId, useCalc } from "@/lib/calc";
+import { useReveal } from "@/lib/reveal";
 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
@@ -35,6 +36,7 @@ function Check({
 export function CalcSection() {
   const calc = useCalc();
   const sectionRef = useRef<HTMLElement>(null);
+  const revealRef = useReveal<HTMLDivElement>();
   const [barVisible, setBarVisible] = useState(false);
 
   useEffect(() => {
@@ -53,7 +55,7 @@ export function CalcSection() {
 
   return (
     <section id="raschet" ref={sectionRef} className="section-pad border-t border-line">
-      <div className="wrap">
+      <div className="wrap" ref={revealRef}>
         <h2 className="h2">Посчитаем при вас</h2>
 
         <div className="mt-10 grid gap-12 md:mt-14 md:grid-cols-2 md:gap-16">
@@ -156,7 +158,11 @@ export function CalcSection() {
 
             <div className="mt-8 border-t border-line pt-8">
               <p className="small text-muted">Итог</p>
-              <p className="total mt-2 text-green">{hasLines ? totalText : "—"}</p>
+              <p className="total mt-2 text-green">
+                <span key={hasLines ? totalText : "empty"} className="total-fade inline-block">
+                  {hasLines ? totalText : "—"}
+                </span>
+              </p>
               <button
                 type="button"
                 className="btn mt-8"
@@ -175,7 +181,9 @@ export function CalcSection() {
           <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-4">
             <span className="small min-w-0 truncate text-muted">Итог</span>
             <span className="num shrink-0 text-green" style={{ fontWeight: 600 }}>
-              {totalText}
+              <span key={totalText} className="total-fade inline-block">
+                {totalText}
+              </span>
             </span>
           </div>
         </div>
