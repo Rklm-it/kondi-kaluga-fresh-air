@@ -310,3 +310,22 @@
 html {
   scroll-behavior: smooth;
 }
+
+@utility price-row {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum" 1;
+  font-size: 17px;
+  line-height: 1.4;
+  &:hover {
+    color: var(--green);
+  }
+  @media (min-width: 768px) {
+    font-size: 24px;
+  }
+}
+
+@utility on-green {
+  color: #ffffff;
+}

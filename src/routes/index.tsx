@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CalcProvider } from "@/lib/calc";
 import { CalcSection } from "@/components/CalcSection";
+import { PriceSection } from "@/components/PriceSection";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -94,7 +95,7 @@ function Content() {
 
       <main>
         <CalcSection />
-        <Section id="price" title="Сколько стоит монтаж" />
+        <PriceSection />
         <Section id="works" title="Наши работы" />
         <Section id="zayavka" title="Заявка" />
       </main>
