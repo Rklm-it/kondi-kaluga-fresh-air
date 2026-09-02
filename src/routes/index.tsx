@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { CalcProvider } from "@/lib/calc";
 import { CalcSection } from "@/components/CalcSection";
 import { PriceSection } from "@/components/PriceSection";
+import { SluzhbaSection } from "@/components/SluzhbaSection";
 import { WorksSection } from "@/components/WorksSection";
 import { RequestSection } from "@/components/RequestSection";
 
@@ -88,6 +89,7 @@ function Content() {
       <main>
         <CalcSection />
         <PriceSection />
+        <SluzhbaSection />
         <WorksSection />
         <RequestSection />
       </main>

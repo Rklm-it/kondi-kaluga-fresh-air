@@ -104,10 +104,13 @@ export function scrollToId(id: string) {
 }
 
 export function CalcProvider({ children }: { children: ReactNode }) {
+  // Расчёт стартует заполненным — самым частым случаем: девятка, кирпич,
+  // полтора метра штробы. Пустые поля на входе делали половину страницы белой,
+  // а весь приём в том и состоит, что цена видна сразу, без единого щелчка.
   const [state, setState] = useState<CalcState>({
-    power: null,
+    power: "9",
     routeMeters: 5,
-    wall: null,
+    wall: "kirpich",
     shtrobaMeters: 1.5,
     vyshka: false,
     alpinist: false,

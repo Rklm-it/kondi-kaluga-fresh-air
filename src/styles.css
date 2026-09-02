@@ -181,9 +181,9 @@
 }
 
 @utility section-pad {
-  padding-block: 56px;
+  padding-block: 48px;
   @media (min-width: 768px) {
-    padding-block: 96px;
+    padding-block: 72px;
   }
 }
 
@@ -269,8 +269,10 @@
   padding-inline: 14px;
   border: 0;
   border-bottom: 1px solid var(--ink-muted);
-  border-radius: 0;
-  background-color: var(--background);
+  border-radius: 4px 4px 0 0;
+  /* Лёгкая заливка: на белом волосяная линия не читается как поле, и секция
+     расчёта выглядит пустой, хотя она рабочая. */
+  background-color: #f5f3ef;
   color: var(--ink);
   font-family: var(--font-body);
   font-size: 16px;
