@@ -82,6 +82,7 @@ export function RequestSection() {
                   <input
                     className="input mt-2"
                     type="tel"
+                    inputMode="tel"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     autoComplete="tel"

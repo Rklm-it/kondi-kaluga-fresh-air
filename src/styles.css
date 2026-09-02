@@ -226,6 +226,7 @@
 }
 
 @utility btn {
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -326,6 +327,7 @@ html {
 }
 
 @utility price-row {
+  cursor: pointer;
   font-family: var(--font-body);
   font-weight: 500;
   font-variant-numeric: tabular-nums;

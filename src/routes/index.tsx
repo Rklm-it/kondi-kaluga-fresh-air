@@ -5,6 +5,7 @@ import { PriceSection } from "@/components/PriceSection";
 import { SluzhbaSection } from "@/components/SluzhbaSection";
 import { WorksSection } from "@/components/WorksSection";
 import { RequestSection } from "@/components/RequestSection";
+import { ContactsSection } from "@/components/ContactsSection";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -92,6 +93,7 @@ function Content() {
         <SluzhbaSection />
         <WorksSection />
         <RequestSection />
+        <ContactsSection />
       </main>
 
       <footer className="section-pad border-t border-line">
