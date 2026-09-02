@@ -46,6 +46,7 @@ const PHOTOS: { src: string; alt: string; span: string }[] = [
 export function WorksSection() {
   const headRef = useReveal<HTMLDivElement>();
   const gridRef = useRevealGroup<HTMLDivElement>();
+  const grid2Ref = useRevealGroup<HTMLDivElement>();
   const fasadRef = useReveal<HTMLDivElement>();
 
   return (
