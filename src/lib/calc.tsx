@@ -169,7 +169,7 @@ export function CalcProvider({ children }: { children: ReactNode }) {
             id: "route",
             label: `Трасса сверх пяти метров, ${formatMeters(extra)} м`,
             amount: Math.round(power.extraMeter * extra),
-            from: power.extraMeterFrom,
+            from: power.extraMeterFrom === true,
           });
         }
       }
@@ -204,8 +204,8 @@ export function CalcProvider({ children }: { children: ReactNode }) {
         id: e.id,
         label: e.label,
         amount: e.amount,
-        from: e.from,
-        note: e.amount === null ? "[уточнить]" : undefined,
+        from: e.from === true,
+        ...(e.amount === null ? { note: "[уточнить]" } : {}),
       });
     }
 

@@ -41,7 +41,7 @@ export function CalcSection() {
     const el = sectionRef.current;
     if (!el) return;
     const io = new IntersectionObserver(
-      ([entry]) => setBarVisible(entry.isIntersecting),
+      (entries) => setBarVisible(entries[0]?.isIntersecting ?? false),
       { threshold: 0 },
     );
     io.observe(el);
