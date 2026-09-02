@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { CalcProvider } from "@/lib/calc";
 import { CalcSection } from "@/components/CalcSection";
 import { PriceSection } from "@/components/PriceSection";
+import { WorksSection } from "@/components/WorksSection";
+import { RequestSection } from "@/components/RequestSection";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -24,16 +26,6 @@ export const Route = createFileRoute("/")({
   }),
   component: Index,
 });
-
-function Section({ id, title }: { id: string; title: string }) {
-  return (
-    <section id={id} className="section-pad border-t border-line">
-      <div className="wrap">
-        <h2 className="h2">{title}</h2>
-      </div>
-    </section>
-  );
-}
 
 function Index() {
   return (
@@ -96,8 +88,8 @@ function Content() {
       <main>
         <CalcSection />
         <PriceSection />
-        <Section id="works" title="Наши работы" />
-        <Section id="zayavka" title="Заявка" />
+        <WorksSection />
+        <RequestSection />
       </main>
 
       <footer className="section-pad border-t border-line">
