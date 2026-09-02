@@ -132,13 +132,124 @@
   --sidebar-ring: oklch(0.551 0.027 264.364);
 }
 
+/* ---- Конди-Калуга: палитра ровно из четырёх цветов ---- */
+:root {
+  --background: #ffffff;
+  --foreground: #14140f;
+  --ink: #14140f;
+  --ink-muted: #4a463f;
+  --green: #1f6f4a;
+  --line: #14140f1a;
+  --radius: 4px;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Manrope", system-ui, sans-serif;
+}
+
+@theme inline {
+  --color-ink: var(--ink);
+  --color-muted: var(--ink-muted);
+  --color-green: var(--green);
+  --color-line: var(--line);
+  --font-display: var(--font-display);
+  --font-body: var(--font-body);
+}
+
 @layer base {
   * {
-    border-color: var(--color-border);
+    border-color: var(--line);
   }
 
   body {
-    background-color: var(--color-background);
-    color: var(--color-foreground);
+    background-color: var(--background);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@utility wrap {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1280px;
+  padding-inline: 24px;
+  @media (min-width: 768px) {
+    padding-inline: 48px;
+  }
+}
+
+@utility section-pad {
+  padding-block: 56px;
+  @media (min-width: 768px) {
+    padding-block: 96px;
+  }
+}
+
+@utility h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  @media (min-width: 768px) {
+    font-size: 84px;
+  }
+}
+
+@utility h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 28px;
+  line-height: 1.05;
+  @media (min-width: 768px) {
+    font-size: 44px;
+  }
+}
+
+@utility body {
+  font-size: 16px;
+  line-height: 1.55;
+  @media (min-width: 768px) {
+    font-size: 18px;
+  }
+}
+
+@utility small {
+  font-size: 15px;
+  line-height: 1.55;
+}
+
+@utility measure {
+  max-width: 62ch;
+}
+
+@utility btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 56px;
+  padding-inline: 32px;
+  border-radius: 4px;
+  background-color: var(--green);
+  color: #ffffff;
+  font-family: var(--font-body);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1;
+  transition: opacity 0.2s ease;
+  &:hover {
+    opacity: 0.88;
+  }
+}
+
+@utility link {
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+  &:hover {
+    color: var(--green);
   }
 }
