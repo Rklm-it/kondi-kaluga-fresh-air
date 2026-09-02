@@ -1,4 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { CalcProvider } from "@/lib/calc";
+import { CalcSection } from "@/components/CalcSection";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -33,6 +35,14 @@ function Section({ id, title }: { id: string; title: string }) {
 }
 
 function Index() {
+  return (
+    <CalcProvider>
+      <Content />
+    </CalcProvider>
+  );
+}
+
+function Content() {
   return (
     <div className="bg-background text-ink">
       <header className="min-h-screen flex flex-col md:flex-row">
@@ -83,7 +93,7 @@ function Index() {
       </header>
 
       <main>
-        <Section id="raschet" title="Посчитаем при вас" />
+        <CalcSection />
         <Section id="price" title="Сколько стоит монтаж" />
         <Section id="works" title="Наши работы" />
         <Section id="zayavka" title="Заявка" />
