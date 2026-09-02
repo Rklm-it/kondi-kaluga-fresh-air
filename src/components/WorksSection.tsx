@@ -50,7 +50,7 @@ export function WorksSection() {
       <div className="wrap mt-10 md:mt-14" ref={gridRef}>
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
           {PHOTOS.slice(0, 3).map((p) => (
-            <figure key={p.src} data-reveal-item className="m-0 aspect-[4/3]">
+            <figure key={p.src} data-reveal-item className="foto m-0 aspect-[4/3] overflow-hidden">
               <img
                 src={p.src}
                 alt={p.alt}
@@ -74,7 +74,7 @@ export function WorksSection() {
       <div className="wrap mt-4 md:mt-6" ref={grid2Ref}>
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 md:gap-6">
           {PHOTOS.slice(3).map((p) => (
-            <figure key={p.src} data-reveal-item className="m-0 aspect-[4/3]">
+            <figure key={p.src} data-reveal-item className="foto m-0 aspect-[4/3] overflow-hidden">
               <img
                 src={p.src}
                 alt={p.alt}

@@ -395,3 +395,19 @@ html {
 .total-fade {
   animation: total-fade 0.18s ease-out;
 }
+
+/* Фотография чуть приближается под курсором — 500 мс, только transform.
+   На телефоне не срабатывает: там нет наведения. */
+.foto img {
+  transition: transform 0.5s var(--ease);
+}
+@media (hover: hover) {
+  .foto:hover img {
+    transform: scale(1.04);
+  }
+}
+
+/* Кнопка проседает под пальцем: без этого нажатие кажется непринятым. */
+.btn:active {
+  transform: translateY(1px);
+}

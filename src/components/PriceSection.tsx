@@ -1,3 +1,4 @@
+import { motion, useReducedMotion } from "motion/react";
 import { POWERS, WALLS, formatRub, scrollToId, useCalc } from "@/lib/calc";
 import { useReveal } from "@/lib/reveal";
 
@@ -29,6 +30,7 @@ const EXTRA_WORKS: { label: string; price: string; add?: { id: string; label: st
 
 export function PriceSection() {
   const calc = useCalc();
+  const tiho = useReducedMotion();
   const revealRef = useReveal<HTMLDivElement>();
 
   return (
@@ -46,8 +48,16 @@ export function PriceSection() {
                 calc.setPower(p.key);
                 scrollToId("raschet");
               }}
-              className="price-row grid w-full grid-cols-[minmax(0,1fr)_auto] items-baseline gap-8 border-b border-line py-4 text-left"
+              className="price-row relative grid w-full grid-cols-[minmax(0,1fr)_auto] items-baseline gap-8 border-b border-line py-4 pl-5 text-left"
             >
+              {calc.power === p.key && (
+                <motion.span
+                  layoutId={tiho ? undefined : "vybrana-moshchnost"}
+                  aria-hidden
+                  className="absolute left-0 top-2 bottom-2 w-[3px] bg-green"
+                  transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+                />
+              )}
               <span className="min-w-0">{p.label}</span>
               <span className="num shrink-0">{formatRub(p.price)}</span>
             </button>

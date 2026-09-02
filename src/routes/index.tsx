@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { CalcProvider } from "@/lib/calc";
+import { StickyBar } from "@/components/StickyBar";
 import { CalcSection } from "@/components/CalcSection";
 import { PriceSection } from "@/components/PriceSection";
 import { SluzhbaSection } from "@/components/SluzhbaSection";
@@ -40,6 +41,7 @@ function Index() {
 function Content() {
   return (
     <div className="bg-background text-ink">
+      <StickyBar />
       <header className="min-h-screen flex flex-col md:flex-row">
         <div className="order-1 md:order-2 md:w-[60%] h-[44vh] md:h-auto">
           <img
