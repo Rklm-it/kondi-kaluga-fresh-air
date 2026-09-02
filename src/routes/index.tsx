@@ -27,16 +27,6 @@ export const Route = createFileRoute("/")({
   component: Index,
 });
 
-function Section({ id, title }: { id: string; title: string }) {
-  return (
-    <section id={id} className="section-pad border-t border-line">
-      <div className="wrap">
-        <h2 className="h2">{title}</h2>
-      </div>
-    </section>
-  );
-}
-
 function Index() {
   return (
     <CalcProvider>
