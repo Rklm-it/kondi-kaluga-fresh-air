@@ -1,3 +1,5 @@
+import { useReveal, useRevealGroup } from "@/lib/reveal";
+
 const PHOTOS: { src: string; alt: string; span: string }[] = [
   {
     src: "/rabota-1.jpg",
@@ -42,16 +44,20 @@ const PHOTOS: { src: string; alt: string; span: string }[] = [
 ];
 
 export function WorksSection() {
+  const headRef = useReveal<HTMLDivElement>();
+  const gridRef = useRevealGroup<HTMLDivElement>();
+  const fasadRef = useReveal<HTMLDivElement>();
+
   return (
     <section id="works" className="section-pad border-t border-line">
-      <div className="wrap">
+      <div className="wrap" ref={headRef}>
         <h2 className="h2">Наши работы</h2>
       </div>
 
-      <div className="wrap mt-10 md:mt-14">
+      <div className="wrap mt-10 md:mt-14" ref={gridRef}>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-12 md:gap-6">
           {PHOTOS.slice(0, 4).map((p) => (
-            <figure key={p.src} className={`m-0 ${p.span}`}>
+            <figure key={p.src} data-reveal-item className={`m-0 ${p.span}`}>
               <img
                 src={p.src}
                 alt={p.alt}
@@ -63,7 +69,7 @@ export function WorksSection() {
         </div>
       </div>
 
-      <div className="mt-4 md:mt-6">
+      <div className="mt-4 md:mt-6" ref={fasadRef}>
         <img
           src="/fasad.jpg"
           alt="Наружный блок кондиционера на кирпичном фасаде дома"
@@ -75,7 +81,7 @@ export function WorksSection() {
       <div className="wrap mt-4 md:mt-6">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-12 md:gap-6">
           {PHOTOS.slice(4).map((p) => (
-            <figure key={p.src} className={`m-0 ${p.span}`}>
+            <figure key={p.src} data-reveal-item className={`m-0 ${p.span}`}>
               <img
                 src={p.src}
                 alt={p.alt}
